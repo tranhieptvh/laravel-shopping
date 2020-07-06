@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'AdminController@loginAdmin');
-Route::post('/', 'AdminController@postLoginAdmin');
+Route::get('/admin', 'AdminController@loginAdmin');
+Route::post('/admin', 'AdminController@postLoginAdmin');
 
 Route::get('/home', function () {
     return view('home');
@@ -43,7 +43,13 @@ Route::get('/home', function () {
 //    ]);
 //});
 
-Route::resource('categories', 'CategoryController')->except('show');
+Route::prefix('admin')->group(function () {
+    Route::resource('categories', 'CategoryController')->except('show');
 
-Route::resource('menus', 'MenuController')->except('show');
+    Route::resource('menus', 'MenuController')->except('show');
+});
+
+//Route::resource('categories', 'CategoryController')->except('show');
+//
+//Route::resource('menus', 'MenuController')->except('show');
 

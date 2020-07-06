@@ -17,7 +17,7 @@ class MenuController extends Controller
     {
         $menus = Menu::latest()->paginate(5);
 
-        return view('menu.index', compact('menus'));
+        return view('admin.menu.index', compact('menus'));
     }
 
     /**
@@ -30,7 +30,7 @@ class MenuController extends Controller
         $menu = new Menu();
         $htmlOption = $menu->getMenu($parentId = '');
 
-        return view('menu.create', compact('htmlOption'));
+        return view('admin.menu.create', compact('htmlOption'));
     }
 
     /**
@@ -63,7 +63,7 @@ class MenuController extends Controller
         $menus = new Menu();
         $htmlOption = $menus->getMenu($menu->parent_id);
 
-        return view('menu.edit', compact('menu', 'htmlOption'));
+        return view('admin.menu.edit', compact('menu', 'htmlOption'));
     }
 
     /**
