@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
-        return view('category.index', compact('categories'));
+        $menus = Menu::latest()->paginate(5);
+
+        return view('menu.index', compact('menus'));
     }
 
     /**
@@ -26,10 +27,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category = new Category();
-        $htmlOption = $category->getCategory($parentId = '');
+        $menu = new Menu();
+        $htmlOption = $menu->getMenu($parentId = '');
 
-        return view('category.create', compact('htmlOption'));
+        return view('menu.create', compact('htmlOption'));
     }
 
     /**
@@ -40,8 +41,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->create([
+        $menu = new Menu();
+        $menu->create([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
@@ -58,11 +59,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        $cats = new Category();
-        $htmlOption = $cats->getCategory($category->parent_id);
+        $menu = Menu::find($id);
+        $menus = new Menu();
+        $htmlOption = $menus->getMenu($menu->parent_id);
 
-        return view('category.edit', compact('category', 'htmlOption'));
+        return view('menu.edit', compact('menu', 'htmlOption'));
     }
 
     /**
@@ -74,8 +75,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-        $category->update([
+        $menu = Menu::find($id);
+        $menu->update([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
             'slug' => Str::slug($request->name)
@@ -93,9 +94,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-//        Category::destroy($id);
+        $menu = Menu::find($id);
+        $menu->delete();
 
         return redirect()->back();
     }
