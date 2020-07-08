@@ -60,8 +60,8 @@ class AdminProductController extends Controller
             ];
             $dataUploadFeatureImage = $this->storageTraitUpload($request, 'feature_image_path', 'product');
             if (!empty($dataUploadFeatureImage)) {
-                $dataProductCreate['feature_image_path'] = $dataUploadFeatureImage['file_path'];
                 $dataProductCreate['feature_image_name'] = $dataUploadFeatureImage['file_name'];
+                $dataProductCreate['feature_image_path'] = $dataUploadFeatureImage['file_path'];
             }
 
             $product = Product::create($dataProductCreate);
@@ -185,6 +185,7 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
+        //Product::destroy($id);
         $product = Product::find($id);
         $product->delete();
 

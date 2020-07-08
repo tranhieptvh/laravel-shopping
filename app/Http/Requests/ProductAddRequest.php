@@ -34,7 +34,7 @@ class ProductAddRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Tên sản phẩm không được phép để trống',
+            'name.required' => 'Tên sản phẩm không được để trống',
             'name.unique' => 'Tên sản phẩm đã tồn tại',
             'name.max' => 'Tên sản phẩm không được dài quá 255 ký tự',
             'name.min' => 'Tên sản phẩm không được ít hơn 5 ký tự',

@@ -50,6 +50,8 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('products', 'AdminProductController');
 
+    Route::resource('sliders', 'AdminSliderController');
+
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
