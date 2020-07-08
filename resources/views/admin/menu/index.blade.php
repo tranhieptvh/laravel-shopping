@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Trang chủ</title>
+    <title>Danh sách menu</title>
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
                                 <tr>
                                     <th scope="row">{{ $menu->id }}</th>
                                     <td>{{ $menu->name }}</td>
-                                    <td style="display: flex">
+                                    <td class="d-flex">
                                         <a href="{{ route('menus.edit', $menu->id) }}"
                                            class="btn btn-warning">Edit</a>
 

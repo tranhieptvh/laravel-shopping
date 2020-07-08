@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Trang chủ</title>
+    <title>Danh mục sản phẩm</title>
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
                                 <tr>
                                     <th scope="row">{{ $category->id }}</th>
                                     <td>{{ $category->name }}</td>
-                                    <td style="display: flex">
+                                    <td class="d-flex">
                                         <a href="{{ route('categories.edit', $category->id) }}"
                                            class="btn btn-warning">Edit</a>
 

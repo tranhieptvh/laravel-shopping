@@ -47,9 +47,11 @@ Route::prefix('admin')->group(function () {
     Route::resource('categories', 'CategoryController')->except('show');
 
     Route::resource('menus', 'MenuController')->except('show');
+
+    Route::resource('products', 'AdminProductController');
+
 });
 
-//Route::resource('categories', 'CategoryController')->except('show');
-//
-//Route::resource('menus', 'MenuController')->except('show');
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
