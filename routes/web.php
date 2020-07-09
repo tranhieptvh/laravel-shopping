@@ -48,10 +48,11 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('menus', 'MenuController')->except('show');
 
-    Route::resource('products', 'AdminProductController');
+    Route::resource('products', 'AdminProductController')->except('show');
 
-    Route::resource('sliders', 'AdminSliderController');
+    Route::resource('sliders', 'AdminSliderController')->except('show');
 
+    Route::resource('settings', 'AdminSettingController')->except('show');
 });
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
